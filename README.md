@@ -2,7 +2,7 @@
 
 Plott Concord initializes repository development hooks and settings from declarative Gradle configuration. Features have explicit DSLs; projects do not maintain a separate generic manifest.
 
-> **Publication status:** `kr.co.plott.concord:0.1.0` was submitted successfully and is awaiting the Gradle Plugin Portal's initial manual approval. The plugin will not resolve from the Portal until that review is complete.
+> **Publication status:** `kr.co.plott.concord:0.1.1` is the latest release and is awaiting the Gradle Plugin Portal's initial manual approval. The plugin will not resolve from the Portal until that review is complete.
 
 The name “Concord” represents multiple development tools agreeing on one project-owned configuration. The public plugin ID is `kr.co.plott.concord`, and the implementation coordinate is `kr.co.plott:gradle-plott-concord`.
 
@@ -20,7 +20,7 @@ After Plugin Portal approval, consumers can apply the public version without rep
 
 ```kotlin
 plugins {
-    id("kr.co.plott.concord") version "0.1.0"
+    id("kr.co.plott.concord") version "0.1.1"
 }
 ```
 
@@ -47,7 +47,7 @@ concord {
 
 The DSL initializes hooks while Gradle configures the project; it does not attach an installer task to every build task. Git determines the hooks directory, so worktrees and `core.hooksPath` are respected. Managed SHA-256 state prevents Concord from overwriting unmanaged, symbolic, or locally modified hooks.
 
-Removing a declaration is additive-only in version 0.1.0: it does not delete a previously initialized hook. Removing managed hooks and their adjacent `.plott-concord` state is an explicit repository-owner operation.
+Removing a declaration is additive-only in version 0.1.x: it does not delete a previously initialized hook. Removing managed hooks and their adjacent `.plott-concord` state is an explicit repository-owner operation.
 
 See [Git hooks behavior](docs/GIT_HOOKS.md) for supported names, execution context, arguments, ownership, and conflict recovery.
 

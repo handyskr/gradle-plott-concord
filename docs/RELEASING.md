@@ -19,7 +19,7 @@ Plugin Portal versions are immutable. A version must never be republished, and o
 
 ## Initial approval
 
-Version `0.1.0` was successfully submitted on 2026-09-01 and is waiting for the initial manual review. No additional version should be submitted merely to poll or refresh that review.
+Version `0.1.0` was submitted on 2026-09-01. Version `0.1.1` supersedes it with substantive hook hardening, release safeguards, public documentation, and Apache 2.0 licensing. No additional version should be submitted merely to poll or refresh the initial review.
 
 The project addresses the official approval criteria as follows:
 
@@ -28,7 +28,7 @@ The project addresses the official approval criteria as follows:
 - English documentation: README and detailed public documents are in this repository.
 - Metadata: description, tags, project URL, and VCS URL point to the public source.
 - Coordinates: plugin ID `kr.co.plott.concord` and group `kr.co.plott` share the same namespace.
-- Final release: `0.1.0` is not a snapshot.
+- Final release: `0.1.1` is not a snapshot.
 - Original public repository: `handyskr/gradle-plott-concord` is not a fork.
 
 The namespace is corporate. Gradle may request a DNS TXT record proving control of `plott.co.kr`, which corresponds to the reversed `kr.co.plott` namespace. The exact record must come from the Gradle reviewer and must not be guessed in advance.
