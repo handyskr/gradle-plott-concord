@@ -52,7 +52,7 @@ For each destination, Concord stores a SHA-256 value under `.plott-concord` next
 
 Initialization uses atomic replacement when the filesystem supports it and a replace fallback otherwise. Command and file sources are idempotent when their content has not changed.
 
-Removing a DSL declaration does not delete the hook in version 0.1.0. Repository owners must deliberately remove both the hook and its matching state file when retiring a managed hook.
+Removing a DSL declaration does not delete the hook in version 0.1.x. Repository owners must deliberately remove both the hook and its matching state file when retiring a managed hook.
 
 ## Configuration-cache behavior
 
