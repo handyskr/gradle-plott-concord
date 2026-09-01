@@ -1,6 +1,6 @@
 [versions]
 junit = "5.13.4"
-kotlin = "2.4.0"
+kotlin = "2.4.10"
 plugin-publish = "2.1.1"
 
 [libraries]
