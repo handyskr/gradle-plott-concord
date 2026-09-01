@@ -35,4 +35,6 @@ The namespace is corporate. Gradle may request a DNS TXT record proving control 
 
 The repository is licensed under Apache License 2.0 with copyright held by Handys Inc. The standard license text, NOTICE attribution, README, and publication POM metadata must remain consistent.
 
+Publication POM ownership uses `handyskr` as the repository SCM identity, `Handys Inc` as the developer and organization, `dev@handys.co.kr` as the representative developer address, the repository as the developer/source URL, and `https://handys.co.kr` as the organization homepage.
+
 Official criteria: [Plugin Portal approval](https://plugins.gradle.org/docs/publish-plugin#approval).

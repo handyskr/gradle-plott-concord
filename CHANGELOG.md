@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Completed company-owned publication metadata for Handys Inc.
+
 ## 0.1.1 - 2026-09-01
 
 - Licensed the project under Apache License 2.0 with copyright held by Handys Inc.

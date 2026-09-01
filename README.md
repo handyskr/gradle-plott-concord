@@ -82,3 +82,5 @@ Applying this plugin allows trusted Gradle configuration to create executable Gi
 Copyright 2026 Handys Inc.
 
 Plott Concord is licensed under the [Apache License 2.0](LICENSE). Attribution information is provided in [NOTICE](NOTICE).
+
+The plugin is published by Handys Inc. Publication metadata uses `dev@handys.co.kr` as the representative developer address, this GitHub repository as the source URL, and [handys.co.kr](https://handys.co.kr) as the organization homepage.
