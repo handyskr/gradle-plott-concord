@@ -1,6 +1,7 @@
 package kr.co.plott.concord.git
 
 import kr.co.plott.concord.exception.InvalidGitHookException
+import java.nio.file.InvalidPathException
 import java.nio.file.Path
 
 open class GitHookSpec internal constructor(private val projectDirectory: Path) {
@@ -14,7 +15,11 @@ open class GitHookSpec internal constructor(private val projectDirectory: Path) 
         if (relativePath.isBlank()) {
             throw InvalidGitHookException("Git hook file path must not be blank")
         }
-        val declaredPath = Path.of(relativePath)
+        val declaredPath = try {
+            Path.of(relativePath)
+        } catch (error: InvalidPathException) {
+            throw InvalidGitHookException("Invalid Git hook file path: $relativePath", error)
+        }
         if (declaredPath.isAbsolute) {
             throw InvalidGitHookException("Git hook file must be relative to the project: $relativePath")
         }

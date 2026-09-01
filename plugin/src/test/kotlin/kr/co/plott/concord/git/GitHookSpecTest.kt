@@ -43,7 +43,7 @@ class GitHookSpecTest {
 
     @Test
     fun `rejects blank absolute and escaping file paths`() {
-        listOf("", projectDirectory.resolve("hook").toString(), "../hook").forEach { path ->
+        listOf("", projectDirectory.resolve("hook").toString(), "../hook", "invalid\u0000path").forEach { path ->
             assertThrows(InvalidGitHookException::class.java) {
                 GitHookSpec(projectDirectory).file(path)
             }
