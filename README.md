@@ -76,3 +76,9 @@ See [Releasing and Plugin Portal approval](docs/RELEASING.md) for tag rules, Act
 ## Security
 
 Applying this plugin allows trusted Gradle configuration to create executable Git hooks. Review a repository's build logic and file-backed hooks before running Gradle. See [Security policy](SECURITY.md) for reporting and trust-boundary details.
+
+## License
+
+Copyright 2026 Handys Inc.
+
+Plott Concord is licensed under the [Apache License 2.0](LICENSE). Attribution information is provided in [NOTICE](NOTICE).

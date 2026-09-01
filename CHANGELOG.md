@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Licensed the project under Apache License 2.0 with copyright held by Handys Inc.
+
 ## 0.1.0 - 2026-09-01
 
 - Added Gradle DSL initialization for every documented Git hook name.

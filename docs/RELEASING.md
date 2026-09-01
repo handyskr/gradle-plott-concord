@@ -33,6 +33,6 @@ The project addresses the official approval criteria as follows:
 
 The namespace is corporate. Gradle may request a DNS TXT record proving control of `plott.co.kr`, which corresponds to the reversed `kr.co.plott` namespace. The exact record must come from the Gradle reviewer and must not be guessed in advance.
 
-The repository currently has no declared software license. A license must be selected by the repository owner; until then, the public source should not be described as open source.
+The repository is licensed under Apache License 2.0 with copyright held by Handys Inc. The standard license text, NOTICE attribution, README, and publication POM metadata must remain consistent.
 
 Official criteria: [Plugin Portal approval](https://plugins.gradle.org/docs/publish-plugin#approval).
