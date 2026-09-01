@@ -36,4 +36,14 @@ class GitHooksExtensionTest {
             extension.hook("pre-commit", Action {})
         }
     }
+
+    @Test
+    fun `rejects a duplicate hook declaration`() {
+        val extension = GitHooksExtension(projectDirectory, Initializer {})
+        extension.hook("pre-commit", Action { it.command("first") })
+
+        assertThrows(InvalidGitHookException::class.java) {
+            extension.hook("pre-commit", Action { it.command("second") })
+        }
+    }
 }

@@ -15,7 +15,8 @@ class GitHookNameTest {
 
     @Test
     fun `rejects unsafe or non-canonical names`() {
-        listOf("", "../pre-commit", "hooks/pre-commit", "PreCommit", "pre_commit", ".sample").forEach { name ->
+        listOf("", "../pre-commit", "hooks/pre-commit", "PreCommit", "pre_commit", ".sample", "not-a-hook")
+            .forEach { name ->
             assertThrows(InvalidGitHookException::class.java) {
                 GitHookName.of(name)
             }

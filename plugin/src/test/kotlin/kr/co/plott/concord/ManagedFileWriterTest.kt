@@ -2,6 +2,7 @@ package kr.co.plott.concord
 
 import kr.co.plott.concord.exception.ManagedFileConflictException
 import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Assumptions.assumeFalse
@@ -47,6 +48,7 @@ class ManagedFileWriterTest {
         writer.write(target, "{}".toByteArray(), executable = false)
 
         assertTrue(Files.isRegularFile(target))
+        assertFalse(Files.isExecutable(target))
     }
 
     @Test
@@ -110,6 +112,33 @@ class ManagedFileWriterTest {
         val directoryTarget = Files.createDirectory(hooksDirectory.resolve("commit-msg"))
         assertThrows(ManagedFileConflictException::class.java) {
             writer.write(directoryTarget, "managed".toByteArray(), executable = true)
+        }
+    }
+
+    @Test
+    fun `refuses symbolic and non-directory ownership state`() {
+        assumeFalse(System.getProperty("os.name").startsWith("Windows"))
+        val firstTarget = directory.resolve("first/pre-commit")
+        Files.createDirectories(firstTarget.parent)
+        val outside = Files.createDirectory(directory.resolve("outside-state"))
+        Files.createSymbolicLink(firstTarget.parent.resolve(".plott-concord"), outside)
+
+        assertThrows(ManagedFileConflictException::class.java) {
+            writer.write(firstTarget, "managed".toByteArray(), executable = true)
+        }
+
+        val secondTarget = directory.resolve("second/pre-commit")
+        Files.createDirectories(secondTarget.parent)
+        Files.writeString(secondTarget.parent.resolve(".plott-concord"), "not a directory")
+        assertThrows(ManagedFileConflictException::class.java) {
+            writer.write(secondTarget, "managed".toByteArray(), executable = true)
+        }
+
+        val thirdTarget = directory.resolve("third/pre-commit")
+        val stateFile = thirdTarget.parent.resolve(".plott-concord/pre-commit.sha256")
+        Files.createDirectories(stateFile)
+        assertThrows(ManagedFileConflictException::class.java) {
+            writer.write(thirdTarget, "managed".toByteArray(), executable = true)
         }
     }
 
