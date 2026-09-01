@@ -1,8 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 - 2026-09-01
 
 - Licensed the project under Apache License 2.0 with copyright held by Handys Inc.
+- Restricted declarations to Git's documented hook names and rejected duplicates.
+- Hardened managed state against symbolic links, invalid paths, and local divergence.
+- Pinned GitHub Actions, scoped publishing credentials, and removed manual publication.
+- Expanded public hook, architecture, security, release, and approval documentation.
 
 ## 0.1.0 - 2026-09-01
 

@@ -15,4 +15,4 @@ Do not disclose a suspected command-injection, path-traversal, hook-ownership, o
 
 ## Supported versions
 
-Security fixes are applied to the latest released version. Version 0.1.0 is awaiting initial Plugin Portal approval.
+Security fixes are applied to the latest released version. Version 0.1.1 is awaiting initial Plugin Portal approval.
