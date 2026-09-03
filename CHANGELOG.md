@@ -3,6 +3,8 @@
 ## Unreleased
 
 - Completed company-owned publication metadata for Handys Inc.
+- Rejected a file-backed hook whose declared source resolves to its own destination, which
+  happens when `core.hooksPath` points at the directory the hooks are committed in.
 
 ## 0.1.1 - 2026-09-01
 

@@ -29,6 +29,8 @@ The command runs with the arguments and standard input Git gives the generated h
 
 `file(...)` resolves a path relative to the root Gradle project. Absolute paths, escaping paths, missing files, and symbolic source files are rejected. The source bytes are copied exactly, and the destination is made executable. The file controls its own exit status and can therefore enforce or reject the Git operation.
 
+A declared source that resolves to its own destination is rejected as well. This happens when `core.hooksPath` points at the directory the hooks are committed in — a repository that keeps its hook bytes in `.githooks/`, declares `file(".githooks/pre-commit")`, and still carries `core.hooksPath=.githooks` from an earlier tool. Copying a file onto itself would arm nothing and would leave managed state inside the repository's own source directory, so Concord fails and names both the source and the resolved hooks directory. Drop the setting (`git config --unset core.hooksPath`) or declare the source outside the hooks directory.
+
 ## Supported hook names
 
 Plott Concord accepts the current hooks documented by Git:
