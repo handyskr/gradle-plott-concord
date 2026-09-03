@@ -29,6 +29,8 @@ The command runs with the arguments and standard input Git gives the generated h
 
 `file(...)` resolves a path relative to the root Gradle project. Absolute paths, escaping paths, missing files, and symbolic source files are rejected. The source bytes are copied exactly, and the destination is made executable. The file controls its own exit status and can therefore enforce or reject the Git operation.
 
+A declared source that resolves to its own destination is rejected as well. This happens when `core.hooksPath` points at the directory the hooks are committed in — a repository that keeps its hook bytes in `.githooks/`, declares `file(".githooks/pre-commit")`, and still carries `core.hooksPath=.githooks` from an earlier tool. Copying a file onto itself would arm nothing and would leave managed state inside the repository's own source directory, so Concord fails and names both the source and the resolved hooks directory. Drop the setting (`git config --unset core.hooksPath`) or declare the source outside the hooks directory.
+
 ## Supported hook names
 
 Plott Concord accepts the current hooks documented by Git:
@@ -57,3 +59,13 @@ Removing a DSL declaration does not delete the hook in version 0.1.x. Repository
 ## Configuration-cache behavior
 
 Git path discovery uses Gradle's provider-based process API. The first configuration that changes managed hook content can invalidate a prior cache fingerprint once; subsequent unchanged builds reuse the configuration cache without running another installer task.
+
+Every initialized hook is also read back through a value source, which makes it an input of the configuration that initialized it. Gradle re-evaluates value sources when it decides whether a cached entry can be reused, so a hook that disappears or changes after an entry was stored invalidates that entry:
+
+| What happened to the destination | Next build |
+| --- | --- |
+| nothing | reuses the configuration cache, does not touch the hooks |
+| deleted | re-configures and initializes the hook again |
+| changed outside Concord | re-configures and fails with the managed-divergence error |
+
+Without this, initialization would only ever run when something else invalidated the entry, and a hook removed by a tool or a script would stay missing without a diagnostic — Git simply would not run it. The cost is that local edits to a managed hook now surface on the next build rather than at the next unrelated re-configuration.

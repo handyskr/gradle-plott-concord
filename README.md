@@ -65,7 +65,7 @@ See [Architecture](docs/ARCHITECTURE.md) for responsibility and pattern rational
 
 The plugin uses one `test` source set with JUnit Jupiter. Tests cover command and file sources, all-name validation, custom `core.hooksPath`, configuration errors, managed-state conflicts, symlink protection, exact byte copying, and non-blocking command execution.
 
-JaCoCo generates XML and HTML reports after tests. The current measured result is 196/200 covered lines (98.0%) and 65/74 covered branches (87.8%). No arbitrary coverage threshold is enforced.
+JaCoCo generates XML and HTML reports after tests. The current measured result is 223/228 covered lines (97.8%) and 75/86 covered branches (87.2%). No arbitrary coverage threshold is enforced.
 
 ## Releases and publication
 

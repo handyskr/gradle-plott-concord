@@ -30,6 +30,8 @@ The sealed source types are justified by two active behaviors: generated non-blo
 
 Feature DSL calls initialize during Gradle configuration. This intentionally differs from an installer task attached to every build task. Initialization is idempotent and configuration-cache aware; no background daemon or persistent process is introduced.
 
+Because configuration is the only place initialization happens, each initialized destination is read back through a value source (`HookDestinationTracker`). Gradle re-evaluates value sources when it validates a cached entry, so the destinations themselves decide whether the configuration that produced them is still valid. That keeps the model free of an installer task while removing the window in which a deleted hook stayed missing until an unrelated change invalidated the entry.
+
 ## Testing strategy
 
 Tests mirror production responsibilities rather than concentrating behavior in one integration test:
