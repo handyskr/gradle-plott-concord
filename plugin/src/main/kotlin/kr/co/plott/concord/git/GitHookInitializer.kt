@@ -10,6 +10,7 @@ internal class GitHookInitializer(
     private val directoryResolver: GitHooksDirectoryResolver,
     private val contentResolver: GitHookContentResolver,
     private val writer: ManagedFileWriter,
+    private val destinationTracker: HookDestinationTracker,
 ) : Initializer<GitHook> {
     override fun initialize(configuration: GitHook) {
         val hooksDirectory = directoryResolver.resolve()
@@ -17,6 +18,7 @@ internal class GitHookInitializer(
         refuseSourceAsDestination(configuration, hooksDirectory, destination)
         val content = contentResolver.resolve(configuration.source)
         writer.write(destination, content, executable = true)
+        destinationTracker.track(destination)
     }
 
     private fun refuseSourceAsDestination(configuration: GitHook, hooksDirectory: Path, destination: Path) {

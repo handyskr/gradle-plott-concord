@@ -69,6 +69,7 @@ class GitHookInitializerTest {
                 fileReader = HookFileReader(projectDirectory),
             ),
             writer = ManagedFileWriter(),
+            destinationTracker = HookDestinationTracker(providers),
         )
     }
 }

@@ -59,3 +59,13 @@ Removing a DSL declaration does not delete the hook in version 0.1.x. Repository
 ## Configuration-cache behavior
 
 Git path discovery uses Gradle's provider-based process API. The first configuration that changes managed hook content can invalidate a prior cache fingerprint once; subsequent unchanged builds reuse the configuration cache without running another installer task.
+
+Every initialized hook is also read back through a value source, which makes it an input of the configuration that initialized it. Gradle re-evaluates value sources when it decides whether a cached entry can be reused, so a hook that disappears or changes after an entry was stored invalidates that entry:
+
+| What happened to the destination | Next build |
+| --- | --- |
+| nothing | reuses the configuration cache, does not touch the hooks |
+| deleted | re-configures and initializes the hook again |
+| changed outside Concord | re-configures and fails with the managed-divergence error |
+
+Without this, initialization would only ever run when something else invalidated the entry, and a hook removed by a tool or a script would stay missing without a diagnostic — Git simply would not run it. The cost is that local edits to a managed hook now surface on the next build rather than at the next unrelated re-configuration.

@@ -5,6 +5,7 @@ import kr.co.plott.concord.git.GitHookContentResolver
 import kr.co.plott.concord.git.GitHookInitializer
 import kr.co.plott.concord.git.GitHooksDirectoryResolver
 import kr.co.plott.concord.git.GitHooksExtension
+import kr.co.plott.concord.git.HookDestinationTracker
 import kr.co.plott.concord.git.HookFileReader
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -19,6 +20,7 @@ class ConcordPlugin : Plugin<Project> {
                 fileReader = HookFileReader(projectDirectory),
             ),
             writer = ManagedFileWriter(),
+            destinationTracker = HookDestinationTracker(project.providers),
         )
         val gitHooks = GitHooksExtension(projectDirectory, initializer)
         project.extensions.create("concord", ConcordExtension::class.java, gitHooks)
