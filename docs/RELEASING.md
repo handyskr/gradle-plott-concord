@@ -19,16 +19,16 @@ Plugin Portal versions are immutable. A version must never be republished, and o
 
 ## Initial approval
 
-Version `0.1.0` was submitted on 2026-09-01. Version `0.1.1` supersedes it with substantive hook hardening, release safeguards, public documentation, and Apache 2.0 licensing. No additional version should be submitted merely to poll or refresh the initial review.
+Version `0.1.0` was submitted on 2026-09-01 and `0.1.1` superseded it. `0.1.1` now resolves from the Portal — a real consumer build resolved and applied it on 2026-09-03 — so the submission is no longer blocked and no version should be published merely to poll the review. `0.1.2` follows it with the two hook-initialization fixes that first consumer found.
 
-The project addresses the official approval criteria as follows:
+The project addressed the official approval criteria as follows:
 
 - Functional plugin: command- and file-backed Git hooks are initialized in effective Git hook directories.
 - Broad utility: the feature is repository-agnostic and does not depend on private Handys services.
 - English documentation: README and detailed public documents are in this repository.
 - Metadata: description, tags, project URL, and VCS URL point to the public source.
 - Coordinates: plugin ID `kr.co.plott.concord` and group `kr.co.plott` share the same namespace.
-- Final release: `0.1.1` is not a snapshot.
+- Final release: no submitted version is a snapshot.
 - Original public repository: `handyskr/gradle-plott-concord` is not a fork.
 
 The namespace is corporate. Gradle may request a DNS TXT record proving control of `plott.co.kr`, which corresponds to the reversed `kr.co.plott` namespace. The exact record must come from the Gradle reviewer and must not be guessed in advance.
