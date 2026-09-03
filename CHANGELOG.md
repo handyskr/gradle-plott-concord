@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.2 - 2026-09-03
 
 - Completed company-owned publication metadata for Handys Inc.
 - Rejected a file-backed hook whose declared source resolves to its own destination, which

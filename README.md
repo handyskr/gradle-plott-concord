@@ -2,7 +2,7 @@
 
 Plott Concord initializes repository development hooks and settings from declarative Gradle configuration. Features have explicit DSLs; projects do not maintain a separate generic manifest.
 
-> **Publication status:** `kr.co.plott.concord:0.1.1` is the latest release and is awaiting the Gradle Plugin Portal's initial manual approval. The plugin will not resolve from the Portal until that review is complete.
+> **Publication status:** `kr.co.plott.concord:0.1.2` is the latest release. Released versions resolve from the Gradle Plugin Portal: `0.1.1` was consumed from it by a real build on 2026-09-03, and the Portal lists it as the latest version.
 
 The name “Concord” represents multiple development tools agreeing on one project-owned configuration. The public plugin ID is `kr.co.plott.concord`, and the implementation coordinate is `kr.co.plott:gradle-plott-concord`.
 
@@ -16,11 +16,11 @@ The current release is built with Gradle 9.7.1. CI validates the plugin and samp
 
 ## Apply the plugin
 
-After Plugin Portal approval, consumers can apply the public version without repository credentials:
+Consumers apply the public version without repository credentials:
 
 ```kotlin
 plugins {
-    id("kr.co.plott.concord") version "0.1.1"
+    id("kr.co.plott.concord") version "0.1.2"
 }
 ```
 
